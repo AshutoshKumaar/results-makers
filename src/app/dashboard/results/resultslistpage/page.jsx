@@ -3,14 +3,18 @@
 import { db } from "@/app/firebase/config";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation';
 import Navbar from "@/app/components/navbar";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function ResultListPage() {
   const [results, setResults] = useState([]);
   const [classFilter, setClassFilter] = useState("");
   const [rollFilter, setRollFilter] = useState("");
   const [filtered, setFiltered] = useState([]);
-
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+ 
   const fetchResults = async () => {
     const snapshot = await getDocs(collection(db, "results"));
     const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -70,6 +74,20 @@ export default function ResultListPage() {
   border: 1px solid #000;
   padding: 1rem; 
   }
+  #report-card {
+          margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;     
+  margin-bottom: 1rem;
+  padding: 0.5rem;         
+  border: 1px solid #1e293b; 
+  text-align: center;
+  border-radius: 0.75rem;
+  width: 20%; 
+  } #report-card span {
+       font-size : 14px;
+       font-weight : 600;
+   }
         img {width : 80px; height: 80px;}
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #000; padding: 8px; text-align: left; }
@@ -85,6 +103,14 @@ export default function ResultListPage() {
     printWindow?.print();
   };
 
+
+  const handleGoBack = () => {
+        setLoading(true)
+        setTimeout(() => {
+            router.push('/dashboard/results')
+        }, 800)
+  }
+
   const handleSearch = () => {
     const search = results.filter(
       (res) =>
@@ -97,6 +123,15 @@ export default function ResultListPage() {
   useEffect(() => {
     fetchResults();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex flex-col  items-center justify-center bg-slate-200 text-blue-600 text-sm font-bold">
+        <AiOutlineLoading3Quarters className="animate-spin text-5xl mb-4" />
+        Redirect to the results-fill-up section
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -128,6 +163,13 @@ export default function ResultListPage() {
           >
             Search
           </button>
+          {/* Go-back */}
+           <button
+            onClick={handleGoBack}
+            className="bg-red-500 text-white px-6 py-2 rounded hover:bg-blue-700 w-full sm:w-auto"
+          >
+            Fill the results
+          </button>
         </div>
 
         {/* Results Display */}
@@ -157,11 +199,14 @@ export default function ResultListPage() {
                   <p id="p-1" className="text-sm">
                     Navneet Nagar Baigna, Katihar Pin code: 854105
                   </p>
-                  <p id="p-2" className="text-sm font-medium">
-                    Marksheet of First term Examination
+                   <p id="p-2" className="text-sm font-medium">
+                    1st Terminal Examination 2025-26
                   </p>
                 </div>
               </div>
+              <div id="report-card" className="mx-auto border border-slate-800 text-center p-2 my-4 rounded-xl">
+                   <span>Report Card</span>
+                </div>
 
               {/* STUDENT DETAILS */}
               <div id="student-details" className="grid grid-cols-2 gap-4 text-sm mb-4">
@@ -212,11 +257,11 @@ export default function ResultListPage() {
               <div className="signature mt-12">
                 <div>
                   <p>______________________</p>
-                  <p>Class Teacher</p>
+                  <p>Class Teacher Signature</p>
                 </div>
                 <div>
                   <p>______________________</p>
-                  <p>Principal</p>
+                  <p>Principal Signature</p>
                 </div>
               </div>
 
