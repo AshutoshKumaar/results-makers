@@ -151,7 +151,7 @@ export default function ResultForm() {
                   <input type="number" value={row.pass} onChange={e => handleChange(i, 'pass', e.target.value)} className="w-full border p-1" />
                 </td>
                 <td className="p-2 border">
-                  <input type="number" value={row.obtained} onChange={e => handleChange(i, 'obtained', e.target.value)} className="w-full border p-1" />
+                  <input type="number" value={row.obtained} onChange={e => handleChange(i, 'obtained', e.target.value)} className="border p-1" />
                 </td>
               </tr>
             ))}
