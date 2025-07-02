@@ -141,17 +141,17 @@ export default function ResultForm() {
           <tbody>
             {marks.map((row, i) => (
               <tr key={i}>
-                <td className="p-2 border">
+                <td className="p-1 border">
                   <input type="text" value={row.subject} onChange={e => handleChange(i, 'subject', e.target.value)} className="w-full border p-1" />
                 </td>
-                <td className="p-2 border">
+                <td className="p-1 border">
                   <input type="number" value={row.full} onChange={e => handleChange(i, 'full', e.target.value)} className="w-full border p-1" />
                 </td>
                 <td className="p-2 border">
                   <input type="number" value={row.pass} onChange={e => handleChange(i, 'pass', e.target.value)} className="w-full border p-1" />
                 </td>
-                <td className="p-2 border">
-                  <input type="number" value={row.obtained} onChange={e => handleChange(i, 'obtained', e.target.value)} className="border p-1" />
+                <td className="p-1 border">
+                  <input type="number" value={row.obtained} onChange={e => handleChange(i, 'obtained', e.target.value)} className="w-full border p-1" />
                 </td>
               </tr>
             ))}
