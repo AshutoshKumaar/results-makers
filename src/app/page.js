@@ -1,14 +1,13 @@
 import Image from "next/image";
 import LoginPage from "./login/page";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <div>
     <main>
          <LoginPage />
-    </main>
-     
-      
+    </main>   
     </div>
   );
 }

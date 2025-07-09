@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 import Navbar from "@/app/components/navbar";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Footer from "@/app/components/Footer";
 
 export default function ResultListPage() {
   const [results, setResults] = useState([]);
@@ -126,17 +127,21 @@ export default function ResultListPage() {
 
   if (loading) {
     return (
-      <div className="h-screen flex flex-col  items-center justify-center bg-slate-200 text-blue-600 text-sm font-bold">
+     <div>
+        <Navbar />
+        <div className="h-screen flex flex-col  items-center justify-center bg-slate-100 text-blue-600 text-sm font-bold">
         <AiOutlineLoading3Quarters className="animate-spin text-5xl mb-4" />
         Redirect to the results-fill-up section
       </div>
+       <Footer />
+     </div>
     );
   }
 
   return (
     <div className="min-h-screen">
       <Navbar />
-      <div className="max-w-[90%] mx-auto py-6">
+      <div className="max-w-[90%] min-h-screen mx-auto py-6">
         <h1 className="text-3xl font-bold mb-6 text-center text-blue-800 underline">
           All Student Results
         </h1>
@@ -292,6 +297,7 @@ export default function ResultListPage() {
           </p>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

@@ -26,7 +26,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-md relative z-50">
+    <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-md sticky top-0 z-50">
       <Link href={'/dashboard/results'}><h1 className="text-xl sm:text-2xl font-extrabold text-blue-700 tracking-wide">SRN Public School</h1></Link>
 
       {user && (
