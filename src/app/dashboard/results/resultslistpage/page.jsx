@@ -231,7 +231,7 @@ export default function ResultListPage() {
                     <th className="border px-2 py-1">Subject</th>
                     <th className="border px-2 py-1">Full Marks</th>
                     <th className="border px-2 py-1">Pass Marks</th>
-                    <th className="border px-2 py-1">Obtaine Marks</th>
+                    <th className="border px-2 py-1">Obtained Marks</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -250,7 +250,7 @@ export default function ResultListPage() {
               <div id="total-section" className="grid grid-cols-3 gap-4 mt-4 text-sm font-medium">
                 <p>Total Marks: {res.total}</p>
                 <p>Percentage: {res.percentage}%</p>
-                <p>Rank: {res.rank}</p>
+                <p>Staus: {res.rank}</p>
               </div>
 
               {/* SIGNATURES */}
