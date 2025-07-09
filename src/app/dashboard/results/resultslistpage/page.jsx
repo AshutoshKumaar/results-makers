@@ -250,7 +250,7 @@ export default function ResultListPage() {
               <div id="total-section" className="grid grid-cols-3 gap-4 mt-4 text-sm font-medium">
                 <p>Total Marks: {res.total}</p>
                 <p>Percentage: {res.percentage}%</p>
-                <p>Staus: {res.rank}</p>
+                <p>Status: {res.rank}</p>
               </div>
 
               {/* SIGNATURES */}
